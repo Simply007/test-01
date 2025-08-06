@@ -3,7 +3,7 @@
  * https://ckeditor.com/ckeditor-5/builder/?redirect=portal#installation/NodgNARATAdCMAYKQCxQKwGZ1QJzoA4A2dARlJExSNwSihTLU10xBHV1xFKiUgCmAO2QIwwUmDFjJMgLqQCKTADMBmKBDlA=
  */
 
-import { ClassicEditor, AutoLink, Autosave, Bold, Emoji, Essentials, Italic, Link, Mention, Paragraph } from 'ckeditor5';
+import { ClassicEditor, AutoLink, Autosave, Bold, Emoji, Essentials, Italic, Link, Mention, Paragraph, EditorConfig } from 'ckeditor5';
 
 import 'ckeditor5/ckeditor5.css';
 
@@ -12,7 +12,7 @@ import './style.css';
 const LICENSE_KEY =
     'eyJhbGciOiJFUzI1NiJ9.eyJleHAiOjE3NTU3MzQzOTksImp0aSI6ImQ2MzViMWQzLWZkYjAtNDc5Yi1iMzcyLTBhMmNiNTIyM2Q5NCIsInVzYWdlRW5kcG9pbnQiOiJodHRwczovL3Byb3h5LWV2ZW50LmNrZWRpdG9yLmNvbSIsImRpc3RyaWJ1dGlvbkNoYW5uZWwiOlsiY2xvdWQiLCJkcnVwYWwiLCJzaCJdLCJ3aGl0ZUxhYmVsIjp0cnVlLCJsaWNlbnNlVHlwZSI6InRyaWFsIiwiZmVhdHVyZXMiOlsiKiJdLCJ2YyI6ImY1NDJhMjA0In0.ocJBwbiK1gGUaJn6A1MwBylwkHPa7wSS86JHml86h6oCBWlx82rKecu4YGSxi0BJ6KE2IUTAKoWX_DBknaUJTQ';
 
-const editorConfig = {
+const editorConfig : EditorConfig = {
     toolbar: {
         items: ['undo', 'redo', '|', 'bold', 'italic', '|', 'emoji', 'link'],
         shouldNotGroupWhenFull: false
@@ -47,4 +47,8 @@ const editorConfig = {
     placeholder: 'Type or paste your content here!'
 };
 
-ClassicEditor.create(document.querySelector('#editor'), editorConfig);
+const editorElement = document.querySelector<HTMLElement>('#editor');
+if (!editorElement) {
+    throw new Error('Editor element not found');
+}
+ClassicEditor.create(editorElement, editorConfig);
