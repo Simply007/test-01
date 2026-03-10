@@ -1,15 +1,68 @@
 name: Bug report
-description: Report a bug
+description: Report a bug to help us improve
 title: "[Bug]: "
 labels: ["bug"]
+assignees: []
 
 body:
-  - type: textarea
-    id: what-happened
+
+  - type: markdown
     attributes:
-      label: What happened?
-      description: Tell us what you saw
-      placeholder: A clear description of the bug
+      value: |
+        Thanks for reporting a bug! 🐛  
+        Please fill out the information below so we can reproduce and fix the issue faster.
+
+  - type: dropdown
+    id: component
+    attributes:
+      label: Affected component
+      description: Which part of the project is affected?
+      multiple: false
+      options:
+        - Editor
+        - UI
+        - API
+        - Documentation
+        - Build / Tooling
+        - Other
+    validations:
+      required: true
+
+  - type: dropdown
+    id: severity
+    attributes:
+      label: Severity
+      description: How severe is this bug?
+      options:
+        - Low (minor inconvenience)
+        - Medium (feature partially broken)
+        - High (major functionality broken)
+        - Critical (system unusable)
+    validations:
+      required: true
+
+  - type: input
+    id: version
+    attributes:
+      label: Product version
+      description: Which version are you using?
+      placeholder: e.g. 1.4.2
+    validations:
+      required: true
+
+  - type: input
+    id: browser
+    attributes:
+      label: Browser / environment
+      description: Browser, OS, or runtime where the issue occurs
+      placeholder: e.g. Chrome 122 / macOS / Node 20
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Describe the bug
+      description: A clear and concise description of the problem
+      placeholder: What happened?
     validations:
       required: true
 
@@ -17,6 +70,40 @@ body:
     id: steps
     attributes:
       label: Steps to reproduce
-      description: How can we reproduce it?
+      description: How can we reproduce the issue?
+      placeholder: |
+        1. Go to...
+        2. Click on...
+        3. See error...
     validations:
       required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+      description: What did you expect to happen?
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant logs or screenshots
+      description: Paste logs, error messages, or attach screenshots
+      render: shell
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Checklist
+      description: Please confirm the following
+      options:
+        - label: I searched existing issues before opening this
+          required: true
+        - label: I can reproduce this issue consistently
+        - label: I am willing to submit a PR to fix this
+
+  - type: markdown
+    attributes:
+      value: |
+        ---
+        ❤️ Thanks for helping improve the project!
