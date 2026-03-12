@@ -1,109 +1,105 @@
-name: Bug report
-description: Report a bug to help us improve
-title: "[Bug]: "
+name: 🐛 Bug report
+title: "bug:"
+description: "Create new ticket for a bug report"
 labels: ["bug"]
 assignees: []
-
 body:
-
-  - type: markdown
-    attributes:
-      value: |
-        Thanks for reporting a bug! 🐛  
-        Please fill out the information below so we can reproduce and fix the issue faster.
-
-  - type: checkboxes
-    id: checklist
-    attributes:
-      label: Checklist
-      description: Please confirm the following
-      options:
-        - label: I searched existing issues before opening this
-          required: true
-        - label: I can reproduce this issue consistently
-        - label: I am willing to submit a PR to fix this
-
-  - type: dropdown
-    id: component
-    attributes:
-      label: Affected component
-      description: Which part of the project is affected?
-      multiple: false
-      options:
-        - Editor
-        - UI
-        - API
-        - Documentation
-        - Build / Tooling
-        - Other
-    validations:
-      required: true
-
-  - type: dropdown
-    id: severity
-    attributes:
-      label: Severity
-      description: How severe is this bug?
-      options:
-        - Low (minor inconvenience)
-        - Medium (feature partially broken)
-        - High (major functionality broken)
-        - Critical (system unusable)
-    validations:
-      required: true
-
-  - type: input
-    id: version
-    attributes:
-      label: Product version
-      description: Which version are you using?
-      placeholder: e.g. 1.4.2
-    validations:
-      required: true
-
-  - type: input
-    id: browser
-    attributes:
-      label: Browser / environment
-      description: Browser, OS, or runtime where the issue occurs
-      placeholder: e.g. Chrome 122 / macOS / Node 20
-
   - type: textarea
     id: description
     attributes:
-      label: Describe the bug
-      description: A clear and concise description of the problem
-      placeholder: What happened?
+      label: "Description of the bug"
+      description: Please enter an explicit description of your issue
+      placeholder: Short and explicit description of your incident...
     validations:
       required: true
-
-  - type: textarea
-    id: steps
+  - type: input
+    id: url
     attributes:
-      label: Steps to reproduce
-      description: How can we reproduce the issue?
-      placeholder: |
-        1. Go to...
-        2. Click on...
-        3. See error...
+      label: "Reproduction URL"
+      description: Please insert the URL of the application where the problem is reproducible.
+      placeholder: https://...
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: "Steps to reproduce"
+      description: Please enter explicit steps to reproduce the issue.
+      value: |
+        1.
     validations:
       required: true
-
+  - type: textarea
+    id: actual
+    attributes:
+      label: "Actual behavior"
+      description: What actually happens?
   - type: textarea
     id: expected
     attributes:
-      label: Expected behavior
-      description: What did you expect to happen?
-
+      label: "Expected behavior"
+      description: A clear and concise description of what you expected to happen.
+  - type: textarea
+    id: screenshot
+    attributes:
+      label: "Screenshots / Video-record"
+      description: If applicable, add screenshots/video-record to help explain your problem.
   - type: textarea
     id: logs
     attributes:
-      label: Relevant logs or screenshots
-      description: Paste logs, error messages, or attach screenshots
+      label: "Logs"
+      description: Please copy and paste relevant log output (browser console, Strapi logs, Next.js server logs, etc.).
       render: shell
-
-  - type: markdown
+  - type: dropdown
+    id: severity
     attributes:
-      value: |
-        ---
-        ❤️ Thanks for helping improve the project!
+      label: "Severity"
+      description: How severe is the issue?
+      options:
+        - Low
+        - Medium
+        - High
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: "Area"
+      description: Which part of the application is affected?
+      multiple: true
+      options:
+        - Frontend (Next.js)
+        - Backend (Strapi)
+        - API / Integration
+        - CI/CD / Build
+        - Other
+  - type: dropdown
+    id: env
+    attributes:
+      label: "Environment"
+      description: In which environment does this bug occur?
+      multiple: true
+      options:
+        - Development
+        - Staging
+        - Production
+  - type: dropdown
+    id: browsers
+    attributes:
+      label: "Browsers"
+      description: What browsers are you seeing the problem on?
+      multiple: true
+      options:
+        - Chrome
+        - Microsoft Edge
+        - Safari
+        - Firefox
+        - Other
+  - type: dropdown
+    id: device
+    attributes:
+      label: "Device"
+      description: What device are you seeing the problem on?
+      multiple: true
+      options:
+        - Desktop
+        - Tablet
+        - Mobile
